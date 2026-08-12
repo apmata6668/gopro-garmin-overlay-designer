@@ -1,3 +1,353 @@
+const translations = {
+  "zh-CN": {
+    languageName: "中文",
+    appTitle: "GoPro / Garmin 浮窗设计器",
+    brandSubtitle: "GoPro + Garmin 浮窗布局",
+    videoOutput: "视频与输出",
+    videoPath: "GoPro 视频路径",
+    browse: "浏览",
+    outputFolder: "输出文件夹",
+    outputFolderPlaceholder: "留空则使用 GoPro 视频所在文件夹",
+    outputName: "输出文件名",
+    layoutPreset: "样式预设",
+    editableGarmin: "可编辑 Garmin 骑行布局",
+    officialDefault1080: "官方 Default 1080p",
+    officialDefault4k: "官方 Default 4K",
+    officialPower1080: "官方 Power 1080p",
+    officialExample: "官方 Example 组合演示",
+    officialExample2: "官方 Example 2 表盘演示",
+    officialMoto1080: "官方 Moto 1080p",
+    officialMoto1080Bars: "官方 Moto 1080p 双条",
+    officialMoto1080Needle: "官方 Moto 1080p 指针",
+    officialMoto4k: "官方 Moto 4K",
+    officialMoto4kBars: "官方 Moto 4K 双条",
+    officialMoto4kNeedle: "官方 Moto 4K 指针",
+    dataSources: "数据来源",
+    goproGpsHelp: "视频自带速度、海拔和轨迹",
+    goproImuHelp: "读取视频内置加速度、重力和相机姿态",
+    imuOverlays: "IMU 浮窗",
+    accel3Axis: "三轴 G 力",
+    gravityDirection: "重力方向",
+    orientation: "姿态角",
+    garminHelp: "外部心率、踏频、功率和 GPS",
+    dataPath: "Garmin FIT / GPX 路径",
+    compareGps: "GPS 对比模式：同时保留 GoPro 和 Garmin 速度/海拔/距离",
+    mergeMode: "数据合并方式",
+    gpsSync: "GPS 同步方式",
+    outputSettings: "输出设置",
+    outputWidth: "输出宽度",
+    outputHeight: "输出高度",
+    speedUnit: "速度单位",
+    altitudeUnit: "海拔单位",
+    advancedSettings: "高级设置",
+    mapProxyEncoder: "地图、代理与编码",
+    exportEncoder: "导出编码",
+    ffmpegFolder: "ffmpeg bin 文件夹（可选）",
+    overlayFont: "浮窗字体",
+    fontPlaceholder: "留空自动选择中文字体",
+    mapStyle: "地图底图样式",
+    show: "显示",
+    hide: "隐藏",
+    useMapProxy: "地图下载使用 v2rayN 混合代理",
+    mapProxy: "地图代理地址",
+    detectHardware: "检测显卡",
+    saveSettings: "保存本机设置",
+    waitingEncoder: "等待检测编码器。",
+    selectedOverlay: "选中浮窗",
+    emptySelection: "点击画布中的浮窗后可改名、调坐标和删除。",
+    name: "名称",
+    size: "尺寸",
+    visible: "可见",
+    duplicate: "复制",
+    remove: "删除",
+    overlayCanvas: "OVERLAY CANVAS",
+    language: "语言",
+    layoutPreview: "浮窗布局预览",
+    realPreview: "真实预览",
+    returnToEdit: "返回编辑",
+    saveLayout: "保存布局",
+    savePreset: "保存预设",
+    loadPreset: "读取预设",
+    exportVideo: "导出视频",
+    cancelExport: "取消导出",
+    more: "更多",
+    outputMode: "输出方式",
+    burnIn: "烧录",
+    transparentOverlay: "透明层",
+    cleanVideo: "无浮窗",
+    uiTheme: "界面主题",
+    nightTheme: "夜间模式",
+    dayTheme: "白天模式",
+    greenTheme: "浅绿模式",
+    recommendedGarmin: "推荐 Garmin",
+    gpsComparison: "GPS 对比",
+    clearOverlays: "清空浮窗",
+    downloadXml: "下载 XML",
+    overlays: "OVERLAYS",
+    overlayData: "浮窗数据",
+    render: "RENDER",
+    renderTask: "导出任务",
+    waitingExport: "等待导出",
+    selectVideoToExport: "选择视频后点击“导出视频”。",
+    logsAndCommand: "日志与命令",
+    windowsCommand: "Windows 命令",
+    copy: "复制",
+    hiddenOverlays: "隐藏浮窗",
+    currentLog: "当前 / 最近一次",
+    recentLogs: "最近日志",
+    refresh: "刷新",
+    saving: "正在保存...",
+    saved: "已保存",
+    saveFailed: "保存失败：{error}",
+    detectingHardware: "正在实际试编码 NVENC / QSV / AMF...",
+    hardwareFailed: "显卡检测失败：{error}",
+    unavailable: "当前不可用",
+    noGpuName: "未读取到显卡名称",
+    availableAcceleration: "可用加速：{items}",
+    none: "无",
+    amfAvailable: "AMD AMF 可用",
+    amfUnavailable: "AMD AMF 当前不可用（需要 AMD 显卡与驱动）",
+    layoutSaved: "布局已保存",
+    previewGenerating: "正在生成真实预览帧，地图模板可能需要等待瓦片下载...",
+    previewGenerated: "真实预览帧已生成：{path}",
+    exportCanceled: "导出已取消",
+    exportCanceledDetail: "当前导出进程已停止。",
+    exportStarted: "导出已启动",
+    exportStartingDetail: "正在启动 gopro-dashboard-overlay。",
+    exporting: "正在导出...",
+    exportComplete: "导出完成。",
+    exportNotStarted: "尚未开始导出。",
+    exportEnded: "导出结束，退出码：{code}",
+    outputFile: "输出文件：{path}",
+    startedAt: "开始时间：{time}",
+    progress: "进度：{percent}%",
+    waitingFfmpeg: "等待 FFmpeg 封装视频",
+    waitingFfmpegDetail: "画面已经绘制完成，正在写入最终视频文件。",
+    mapTilesFailed: "地图底图下载失败",
+    mapTilesFailedDetail: "轨迹线可以生成，但底图瓦片没有下载完整。建议保留 CyclOSM、稍后重试，或先取消地图浮窗。",
+    framesComplete: "帧绘制完成",
+    drawingFrames: "正在绘制浮窗帧",
+    renderSpeed: "速度 {value}",
+    remainingElapsed: "剩余/耗时 {value}",
+    gpsAlignmentComplete: "GPS 位置拟合完成",
+    gpsAlignmentDetail: "已自动校正 {offset} 秒，轨迹中位误差 {error} 米。",
+    preparingRender: "正在准备渲染",
+    preparingRenderDetail: "已开始读取视频和 GPS 数据。",
+    exportStartedDetail: "等待第一批进度日志。",
+    progressRetrying: "进度连接重试中",
+    progressRetryDetail: "后台导出任务可能仍在运行，网页会继续轮询。",
+    connectionInterrupted: "进度连接暂时中断，正在自动重试。",
+    consecutiveFailures: "连续失败次数：{count}",
+    lastError: "最后错误：{error}",
+    serverHint: "请求失败。可能是服务未启动、路径填写错误，或当前已有导出任务。",
+    runInPowerShell: "请在 PowerShell 运行：",
+    thenOpenBrowser: "然后用脚本输出的 http://127.0.0.1:端口/ 打开网页。",
+    exportQuality: "导出画质 / 码率",
+    mapZoom: "动态地图缩放",
+    mergeModes: {
+      OPTIMIZED: "优化混合：GoPro 速度/加速度 + Garmin 心率/海拔",
+      EXTEND: "GoPro 主数据 + Garmin 心率/踏频/功率",
+      OVERWRITE: "Garmin GPS/速度/海拔优先",
+      COMPARE: "双 GPS 独立对比",
+      GOPRO_ONLY: "仅 GoPro 视频内置数据"
+    },
+    gpsSyncModes: { time: "时间拟合（默认）", position: "GPS 位置拟合（双 GPS）" },
+    bitrateModes: { "100M": "原片级 100 Mbps", "80M": "高画质 80 Mbps（推荐）", "50M": "平衡 50 Mbps", "25M": "省空间 25 Mbps" },
+    encoderModes: {
+      cpu: "CPU libx264（最稳定）",
+      nvgpu: "NVIDIA NVENC H.264",
+      nnvgpu: "NVIDIA CUDA 全流程（自动方向修正）",
+      qsv: "Intel QSV HEVC（实验）",
+      amf_h264: "AMD AMF H.264（实验）"
+    },
+    mapStyles: { "mapbox-satellite": "Mapbox 卫星影像", cyclosm: "CyclOSM 骑行地图（推荐）", osm: "OpenStreetMap 默认" },
+    widgetTitles: {
+      speed: "速度", gopro_speed: "GoPro速度", garmin_speed: "Garmin速度", hr: "心率", cadence: "踏频", power: "功率", alt: "海拔", gopro_alt: "GoPro海拔", garmin_alt: "Garmin海拔", gradient: "坡度", distance: "距离", gopro_distance: "GoPro距离", garmin_distance: "Garmin距离", temp: "温度", datetime: "时间", gps: "GPS", moving_map: "动态地图", journey_map: "轨迹地图", compass: "指南针", chart: "海拔曲线", accel: "加速度", imu_accel: "GoPro三轴G力", imu_gravity: "GoPro重力方向", imu_orientation: "GoPro姿态角"
+    }
+  },
+  en: {
+    languageName: "English",
+    appTitle: "GoPro / Garmin Overlay Designer",
+    brandSubtitle: "GoPro + Garmin overlay layout",
+    videoOutput: "Video & Output",
+    videoPath: "GoPro video path",
+    browse: "Browse",
+    outputFolder: "Output folder",
+    outputFolderPlaceholder: "Leave blank to use the GoPro video folder",
+    outputName: "Output file name",
+    layoutPreset: "Layout preset",
+    editableGarmin: "Editable Garmin riding layout",
+    officialDefault1080: "Official Default 1080p",
+    officialDefault4k: "Official Default 4K",
+    officialPower1080: "Official Power 1080p",
+    officialExample: "Official Example composition",
+    officialExample2: "Official Example 2 dashboard",
+    officialMoto1080: "Official Moto 1080p",
+    officialMoto1080Bars: "Official Moto 1080p dual bars",
+    officialMoto1080Needle: "Official Moto 1080p needle",
+    officialMoto4k: "Official Moto 4K",
+    officialMoto4kBars: "Official Moto 4K dual bars",
+    officialMoto4kNeedle: "Official Moto 4K needle",
+    dataSources: "Data Sources",
+    goproGpsHelp: "Video speed, altitude, and track metadata",
+    goproImuHelp: "Read built-in acceleration, gravity, and camera orientation",
+    imuOverlays: "IMU overlays",
+    accel3Axis: "3-axis G-force",
+    gravityDirection: "Gravity direction",
+    orientation: "Orientation",
+    garminHelp: "External heart rate, cadence, power, and GPS",
+    dataPath: "Garmin FIT / GPX path",
+    compareGps: "GPS comparison: keep GoPro and Garmin speed / altitude / distance",
+    mergeMode: "Data merge mode",
+    gpsSync: "GPS sync method",
+    outputSettings: "Output Settings",
+    outputWidth: "Output width",
+    outputHeight: "Output height",
+    speedUnit: "Speed unit",
+    altitudeUnit: "Altitude unit",
+    advancedSettings: "Advanced settings",
+    mapProxyEncoder: "Map, Proxy & Encoding",
+    exportEncoder: "Export encoder",
+    ffmpegFolder: "FFmpeg bin folder (optional)",
+    overlayFont: "Overlay font",
+    fontPlaceholder: "Leave blank to auto-select a CJK-capable font",
+    mapStyle: "Map base layer",
+    show: "Show",
+    hide: "Hide",
+    useMapProxy: "Use v2rayN mixed proxy for map downloads",
+    mapProxy: "Map proxy address",
+    detectHardware: "Detect GPU",
+    saveSettings: "Save local settings",
+    waitingEncoder: "Waiting to detect encoders.",
+    selectedOverlay: "Selected Overlay",
+    emptySelection: "Select an overlay on the canvas to rename, move, or remove it.",
+    name: "Name",
+    size: "Size",
+    visible: "Visible",
+    duplicate: "Duplicate",
+    remove: "Remove",
+    overlayCanvas: "OVERLAY CANVAS",
+    language: "Language",
+    layoutPreview: "Overlay Layout Preview",
+    realPreview: "Real Preview",
+    returnToEdit: "Back to Edit",
+    saveLayout: "Save Layout",
+    savePreset: "Save Preset",
+    loadPreset: "Load Preset",
+    exportVideo: "Export Video",
+    cancelExport: "Cancel Export",
+    more: "More",
+    outputMode: "Output mode",
+    burnIn: "Burn-in",
+    transparentOverlay: "Transparent",
+    cleanVideo: "Clean video",
+    uiTheme: "Interface theme",
+    nightTheme: "Night",
+    dayTheme: "Day",
+    greenTheme: "Light green",
+    recommendedGarmin: "Recommended Garmin",
+    gpsComparison: "GPS Compare",
+    clearOverlays: "Clear Overlays",
+    downloadXml: "Download XML",
+    overlays: "OVERLAYS",
+    overlayData: "Overlay Data",
+    render: "RENDER",
+    renderTask: "Render Task",
+    waitingExport: "Waiting to export",
+    selectVideoToExport: "Select a video, then click Export Video.",
+    logsAndCommand: "Logs & Command",
+    windowsCommand: "Windows command",
+    copy: "Copy",
+    hiddenOverlays: "Hidden overlays",
+    currentLog: "Current / latest",
+    recentLogs: "Recent logs",
+    refresh: "Refresh",
+    saving: "Saving...",
+    saved: "Saved",
+    saveFailed: "Save failed: {error}",
+    detectingHardware: "Testing NVENC / QSV / AMF encoders...",
+    hardwareFailed: "GPU detection failed: {error}",
+    unavailable: "unavailable",
+    noGpuName: "GPU name unavailable",
+    availableAcceleration: "Available acceleration: {items}",
+    none: "none",
+    amfAvailable: "AMD AMF available",
+    amfUnavailable: "AMD AMF is unavailable (requires an AMD GPU and driver)",
+    layoutSaved: "Layout saved",
+    previewGenerating: "Generating a real preview frame. Map layouts may wait for tile downloads...",
+    previewGenerated: "Real preview frame generated: {path}",
+    exportCanceled: "Export canceled",
+    exportCanceledDetail: "The active export process has stopped.",
+    exportStarted: "Export started",
+    exportStartingDetail: "Starting gopro-dashboard-overlay.",
+    exporting: "Exporting...",
+    exportComplete: "Export complete.",
+    exportNotStarted: "No export has started.",
+    exportEnded: "Export ended with exit code: {code}",
+    outputFile: "Output file: {path}",
+    startedAt: "Started: {time}",
+    progress: "Progress: {percent}%",
+    waitingFfmpeg: "Waiting for FFmpeg to finish the video",
+    waitingFfmpegDetail: "Frame drawing is complete; FFmpeg is writing the final video file.",
+    mapTilesFailed: "Map tile download failed",
+    mapTilesFailedDetail: "The route line can still render, but map tiles did not finish downloading. Keep CyclOSM, try again later, or remove the map overlay.",
+    framesComplete: "Frame drawing complete",
+    drawingFrames: "Drawing overlay frames",
+    renderSpeed: "Speed {value}",
+    remainingElapsed: "Remaining / elapsed {value}",
+    gpsAlignmentComplete: "GPS position alignment complete",
+    gpsAlignmentDetail: "Automatically adjusted by {offset} seconds; median track error is {error} m.",
+    preparingRender: "Preparing render",
+    preparingRenderDetail: "Started reading video and GPS data.",
+    exportStartedDetail: "Waiting for the first progress log.",
+    progressRetrying: "Retrying progress connection",
+    progressRetryDetail: "The background export may still be running. The page will keep polling.",
+    connectionInterrupted: "Progress connection interrupted; retrying automatically.",
+    consecutiveFailures: "Consecutive failures: {count}",
+    lastError: "Last error: {error}",
+    serverHint: "Request failed. The local service may not be running, a path may be invalid, or another export may be active.",
+    runInPowerShell: "Run this in PowerShell:",
+    thenOpenBrowser: "Then open the http://127.0.0.1:port/ address printed by the script.",
+    exportQuality: "Export quality / bitrate",
+    mapZoom: "Moving map zoom",
+    mergeModes: {
+      OPTIMIZED: "Optimized: GoPro speed/acceleration + Garmin heart rate/altitude",
+      EXTEND: "GoPro primary data + Garmin heart rate/cadence/power",
+      OVERWRITE: "Prefer Garmin GPS / speed / altitude",
+      COMPARE: "Compare both GPS sources",
+      GOPRO_ONLY: "GoPro video metadata only"
+    },
+    gpsSyncModes: { time: "Timestamp alignment (default)", position: "GPS position alignment (both GPS)" },
+    bitrateModes: { "100M": "Near-source 100 Mbps", "80M": "High quality 80 Mbps (recommended)", "50M": "Balanced 50 Mbps", "25M": "Smaller file 25 Mbps" },
+    encoderModes: {
+      cpu: "CPU libx264 (most reliable)",
+      nvgpu: "NVIDIA NVENC H.264",
+      nnvgpu: "NVIDIA CUDA full pipeline (auto rotation)",
+      qsv: "Intel QSV HEVC (experimental)",
+      amf_h264: "AMD AMF H.264 (experimental)"
+    },
+    mapStyles: { "mapbox-satellite": "Mapbox Satellite", cyclosm: "CyclOSM cycling map (recommended)", osm: "OpenStreetMap default" },
+    widgetTitles: {
+      speed: "Speed", gopro_speed: "GoPro speed", garmin_speed: "Garmin speed", hr: "Heart rate", cadence: "Cadence", power: "Power", alt: "Altitude", gopro_alt: "GoPro altitude", garmin_alt: "Garmin altitude", gradient: "Grade", distance: "Distance", gopro_distance: "GoPro distance", garmin_distance: "Garmin distance", temp: "Temperature", datetime: "Time", gps: "GPS", moving_map: "Moving map", journey_map: "Route map", compass: "Compass", chart: "Altitude chart", accel: "Acceleration", imu_accel: "GoPro 3-axis G-force", imu_gravity: "GoPro gravity direction", imu_orientation: "GoPro orientation"
+    }
+  }
+};
+
+const languageStorageKey = "overlayDesignerLanguage";
+let currentLanguage = localStorage.getItem(languageStorageKey) === "en" ? "en" : "zh-CN";
+
+function t(key) {
+  return translations[currentLanguage]?.[key] ?? translations["zh-CN"][key] ?? key;
+}
+
+function formatText(key, values = {}) {
+  return String(t(key)).replace(/\{(\w+)\}/g, (_match, name) => values[name] ?? "");
+}
+
+function widgetTitle(type) {
+  return t("widgetTitles")[type] || type;
+}
+
 const widgetTemplates = [
   { type: "speed", title: "\u901f\u5ea6", metric: "speed", units: "speed", value: "32", unitText: "km/h", xml: "metric" },
   { type: "gopro_speed", title: "GoPro\u901f\u5ea6", metric: "speed", units: "speed", value: "31", unitText: "km/h", xml: "metric" },
@@ -67,6 +417,7 @@ const elements = {
   overlayFont: document.getElementById("overlayFont"),
   mapStyle: document.getElementById("mapStyle"),
   mapApiKey: document.getElementById("mapApiKey"),
+  languageSelect: document.getElementById("languageSelect"),
   themeSelect: document.getElementById("themeSelect"),
   encoderProfile: document.getElementById("encoderProfile"),
   useMapProxy: document.getElementById("useMapProxy"),
@@ -94,6 +445,165 @@ const elements = {
   hardwareStatus: document.getElementById("hardwareStatus"),
   settingsSaveState: document.getElementById("settingsSaveState")
 };
+
+const staticTextKeys = {
+  "GoPro + Garmin 浮窗布局": "brandSubtitle",
+  "视频与输出": "videoOutput",
+  "GoPro 视频路径": "videoPath",
+  "浏览": "browse",
+  "输出文件夹": "outputFolder",
+  "输出文件名": "outputName",
+  "样式预设": "layoutPreset",
+  "可编辑 Garmin 骑行布局": "editableGarmin",
+  "官方 Default 1080p": "officialDefault1080",
+  "官方 Default 4K": "officialDefault4k",
+  "官方 Power 1080p": "officialPower1080",
+  "官方 Example 组合演示": "officialExample",
+  "官方 Example 2 表盘演示": "officialExample2",
+  "官方 Moto 1080p": "officialMoto1080",
+  "官方 Moto 1080p 双条": "officialMoto1080Bars",
+  "官方 Moto 1080p 指针": "officialMoto1080Needle",
+  "官方 Moto 4K": "officialMoto4k",
+  "官方 Moto 4K 双条": "officialMoto4kBars",
+  "官方 Moto 4K 指针": "officialMoto4kNeedle",
+  "数据来源": "dataSources",
+  "视频自带速度、海拔和轨迹": "goproGpsHelp",
+  "读取视频内置加速度、重力和相机姿态": "goproImuHelp",
+  "IMU 浮窗": "imuOverlays",
+  "三轴 G 力": "accel3Axis",
+  "重力方向": "gravityDirection",
+  "姿态角": "orientation",
+  "外部心率、踏频、功率和 GPS": "garminHelp",
+  "Garmin FIT / GPX 路径": "dataPath",
+  "GPS 对比模式：同时保留 GoPro 和 Garmin 速度/海拔/距离": "compareGps",
+  "数据合并方式": "mergeMode",
+  "GPS 同步方式": "gpsSync",
+  "输出设置": "outputSettings",
+  "输出宽度": "outputWidth",
+  "输出高度": "outputHeight",
+  "速度单位": "speedUnit",
+  "海拔单位": "altitudeUnit",
+  "地图、代理与编码": "mapProxyEncoder",
+  "高级设置": "advancedSettings",
+  "导出编码": "exportEncoder",
+  "ffmpeg bin 文件夹（可选）": "ffmpegFolder",
+  "浮窗字体": "overlayFont",
+  "地图底图样式": "mapStyle",
+  "地图下载使用 v2rayN 混合代理": "useMapProxy",
+  "地图代理地址": "mapProxy",
+  "检测显卡": "detectHardware",
+  "保存本机设置": "saveSettings",
+  "等待检测编码器。": "waitingEncoder",
+  "选中浮窗": "selectedOverlay",
+  "点击画布中的浮窗后可改名、调坐标和删除。": "emptySelection",
+  "名称": "name",
+  "尺寸": "size",
+  "可见": "visible",
+  "复制": "duplicate",
+  "删除": "remove",
+  "浮窗布局预览": "layoutPreview",
+  "真实预览": "realPreview",
+  "保存布局": "saveLayout",
+  "保存预设": "savePreset",
+  "读取预设": "loadPreset",
+  "导出视频": "exportVideo",
+  "取消导出": "cancelExport",
+  "更多": "more",
+  "输出方式": "outputMode",
+  "烧录": "burnIn",
+  "透明层": "transparentOverlay",
+  "无浮窗": "cleanVideo",
+  "界面主题": "uiTheme",
+  "夜间模式": "nightTheme",
+  "白天模式": "dayTheme",
+  "浅绿模式": "greenTheme",
+  "推荐 Garmin": "recommendedGarmin",
+  "GPS 对比": "gpsComparison",
+  "清空浮窗": "clearOverlays",
+  "下载 XML": "downloadXml",
+  "浮窗数据": "overlayData",
+  "导出任务": "renderTask",
+  "等待导出": "waitingExport",
+  "选择视频后点击“导出视频”。": "selectVideoToExport",
+  "日志与命令": "logsAndCommand",
+  "Windows 命令": "windowsCommand",
+  "Language": "language",
+  "OVERLAY CANVAS": "overlayCanvas",
+  "OVERLAYS": "overlays",
+  "RENDER": "render"
+};
+
+const staticTextNodes = [];
+
+function captureStaticTextNodes() {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    const original = node.nodeValue;
+    const source = original.trim();
+    if (!source || !staticTextKeys[source]) continue;
+    const start = original.indexOf(source);
+    staticTextNodes.push({
+      node,
+      source,
+      prefix: original.slice(0, start),
+      suffix: original.slice(start + source.length)
+    });
+  }
+}
+
+function translateStaticText() {
+  staticTextNodes.forEach(({ node, source, prefix, suffix }) => {
+    const translated = currentLanguage === "zh-CN" ? source : t(staticTextKeys[source]);
+    node.nodeValue = `${prefix}${translated}${suffix}`;
+  });
+}
+
+function translateSelectOptions(select, labels) {
+  if (!select) return;
+  Array.from(select.options).forEach((option) => {
+    const label = labels[option.value];
+    if (label) option.textContent = label;
+  });
+}
+
+function applyLanguage(language, persist = true) {
+  currentLanguage = language === "en" ? "en" : "zh-CN";
+  document.documentElement.lang = currentLanguage;
+  document.title = t("appTitle");
+  if (elements.languageSelect) {
+    elements.languageSelect.value = currentLanguage;
+    elements.languageSelect.setAttribute("aria-label", t("language"));
+  }
+  if (persist) localStorage.setItem(languageStorageKey, currentLanguage);
+  translateStaticText();
+  if (elements.outputFolder) elements.outputFolder.placeholder = t("outputFolderPlaceholder");
+  if (elements.overlayFont) elements.overlayFont.placeholder = t("fontPlaceholder");
+  translateSelectOptions(elements.gpsSync, t("gpsSyncModes"));
+  translateSelectOptions(elements.mapStyle, t("mapStyles"));
+  configureMergeModes();
+  configureEncoderOptions();
+  configureVideoQualityControl();
+  configureMapZoomControl();
+  translateLogHistory();
+  if (!state.previewFrameUrl) render();
+}
+
+function translateLogHistory() {
+  const toolbar = document.querySelector(".log-history-toolbar");
+  if (!toolbar) return;
+  const label = toolbar.querySelector("span");
+  const refresh = toolbar.querySelector("button");
+  if (label) label.textContent = t("recentLogs");
+  if (logHistorySelect) logHistorySelect.setAttribute("aria-label", t("recentLogs"));
+  if (refresh) {
+    refresh.textContent = t("refresh");
+    refresh.title = t("refreshLogList");
+  }
+  Array.from(logHistorySelect?.options || []).forEach((option) => {
+    if (option.value === "current") option.textContent = t("currentLog");
+  });
+}
 
 function nextId() {
   return `w_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 7)}`;
@@ -221,7 +731,7 @@ function renderPalette() {
   widgetTemplates.filter((template) => template.group !== "imu").forEach((template) => {
     const row = document.createElement("label");
     row.className = "palette-toggle";
-    row.title = template.title;
+    row.title = widgetTitle(template.type);
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -229,7 +739,7 @@ function renderPalette() {
     checkbox.addEventListener("change", () => setWidgetTypeVisible(template.type, checkbox.checked));
 
     const text = document.createElement("span");
-    text.textContent = template.title;
+    text.textContent = widgetTitle(template.type);
 
     row.appendChild(checkbox);
     row.appendChild(text);
@@ -252,12 +762,12 @@ function renderStage() {
     const image = document.createElement("img");
     image.className = "preview-frame";
     image.src = state.previewFrameUrl;
-    image.alt = "真实渲染预览";
+    image.alt = currentLanguage === "en" ? "Real rendered preview" : "真实渲染预览";
     elements.stage.appendChild(image);
-    if (previewButton) previewButton.textContent = "返回编辑";
+    if (previewButton) previewButton.textContent = t("returnToEdit");
     return;
   }
-  if (previewButton) previewButton.textContent = "真实预览";
+  if (previewButton) previewButton.textContent = t("realPreview");
   if (state.officialXml) {
     renderOfficialStage();
   }
@@ -296,12 +806,12 @@ function widgetGeometry(template) {
 
 function widgetPreviewMarkup(template) {
   if (template.group !== "imu") {
-    return `<span class="label">${escapeHtml(template.title)}</span><span class="value">${escapeHtml(template.value)}<span class="unit">${escapeHtml(unitLabel(template))}</span></span>`;
+    return `<span class="label">${escapeHtml(widgetTitle(template.type))}</span><span class="value">${escapeHtml(template.value)}<span class="unit">${escapeHtml(unitLabel(template))}</span></span>`;
   }
   const labels = template.type === "imu_orientation" ? ["P", "R", "Y"] : ["X", "Y", "Z"];
   const values = template.type === "imu_accel" ? ["+0.13", "-0.74", "-0.58"] : template.type === "imu_gravity" ? ["+0.02", "-0.78", "-0.62"] : ["-8.4", "+2.1", "+31.6"];
   const unit = template.type === "imu_accel" ? "G" : template.type === "imu_orientation" ? "DEG" : "";
-  return `<span class="label">${escapeHtml(template.title)}</span><span class="imu-readings">${labels.map((label, index) => `<span><small>${label}</small><b>${values[index]}</b><em>${unit}</em></span>`).join("")}</span>`;
+  return `<span class="label">${escapeHtml(widgetTitle(template.type))}</span><span class="imu-readings">${labels.map((label, index) => `<span><small>${label}</small><b>${values[index]}</b><em>${unit}</em></span>`).join("")}</span>`;
 }
 
 function renderOfficialStage() {
@@ -549,14 +1059,14 @@ function renderHiddenWidgets() {
 
   const title = document.createElement("div");
   title.className = "hidden-title";
-  title.textContent = "\u9690\u85cf\u6d6e\u7a97";
+  title.textContent = t("hiddenOverlays");
   elements.hiddenWidgets.appendChild(title);
 
   hiddenItems.forEach((item) => {
     const template = templateByType(item.type);
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = `${template.title} \u00b7 ${item.name}`;
+    button.textContent = `${widgetTitle(template.type)} · ${item.name}`;
     button.addEventListener("click", () => {
       item.visible = true;
       state.selectedId = item.id;
@@ -584,37 +1094,41 @@ function configureMergeModes() {
   MERGE_MODES.forEach((mode) => {
     const option = document.createElement("option");
     option.value = mode.value;
-    option.textContent = mode.label;
+    option.textContent = t("mergeModes")[mode.value] || mode.label;
     elements.mergeMode.appendChild(option);
   });
   elements.mergeMode.value = MERGE_MODES.some((mode) => mode.value === previous) ? previous : "EXTEND";
 }
 
 function configureEncoderOptions() {
-  const cudaOption = elements.encoderProfile?.querySelector('option[value="nnvgpu"]');
-  if (cudaOption) cudaOption.textContent = "NVIDIA CUDA \u5168\u6d41\u7a0b\uff08\u81ea\u52a8\u65b9\u5411\u4fee\u6b63\uff09";
   Array.from(elements.encoderProfile?.options || []).forEach((option) => {
-    option.dataset.baseLabel = option.textContent;
+    option.dataset.baseLabel = t("encoderModes")[option.value] || option.textContent;
+    const unavailable = option.dataset.unavailable === "true";
+    option.textContent = unavailable ? `${option.dataset.baseLabel} (${t("unavailable")})` : option.dataset.baseLabel;
   });
 }
 
 function configureVideoQualityControl() {
-  if (document.getElementById("videoBitrate")) return;
+  const existing = document.getElementById("videoBitrate");
+  if (existing) {
+    const label = existing.closest("label");
+    if (label) label.firstChild.nodeValue = t("exportQuality");
+    Array.from(existing.options).forEach((option) => {
+      option.textContent = t("bitrateModes")[option.value] || option.textContent;
+    });
+    elements.videoBitrate = existing;
+    return;
+  }
   const encoderLabel = elements.encoderProfile?.closest("label");
   if (!encoderLabel) return;
   const label = document.createElement("label");
-  label.textContent = "\u5bfc\u51fa\u753b\u8d28 / \u7801\u7387";
+  label.textContent = t("exportQuality");
   const select = document.createElement("select");
   select.id = "videoBitrate";
-  [
-    ["100M", "\u539f\u7247\u7ea7 100 Mbps"],
-    ["80M", "\u9ad8\u753b\u8d28 80 Mbps\uff08\u63a8\u8350\uff09"],
-    ["50M", "\u5e73\u8861 50 Mbps"],
-    ["25M", "\u7701\u7a7a\u95f4 25 Mbps"]
-  ].forEach(([value, text]) => {
+  ["100M", "80M", "50M", "25M"].forEach((value) => {
     const option = document.createElement("option");
     option.value = value;
-    option.textContent = text;
+    option.textContent = t("bitrateModes")[value];
     option.selected = value === "80M";
     select.appendChild(option);
   });
@@ -637,12 +1151,18 @@ function applyMapZoomToOfficial() {
 }
 
 function configureMapZoomControl() {
-  if (document.getElementById("mapZoom")) return;
+  const existing = document.getElementById("mapZoom");
+  if (existing) {
+    const label = existing.closest("label");
+    if (label) label.firstChild.nodeValue = t("mapZoom");
+    elements.mapZoom = existing;
+    return;
+  }
   const mapLabel = elements.mapStyle?.closest("label");
   if (!mapLabel) return;
   const label = document.createElement("label");
   label.className = "map-zoom-control";
-  label.textContent = "\u52a8\u6001\u5730\u56fe\u7f29\u653e";
+  label.textContent = t("mapZoom");
   const input = document.createElement("input");
   input.id = "mapZoom";
   input.type = "number";
@@ -1040,16 +1560,16 @@ function buildCommand() {
   const dataPath = quotePath(elements.dataPath.value.trim() || "C:\\Garmin\\activity.fit");
   const dataFlag = elements.dataPath.value.toLowerCase().endsWith(".fit") ? "--fit" : "--gpx";
   const useExternalData = elements.useExternalData.checked;
-  const ffmpegPath = elements.ffmpegDir.value.trim();
-  const ffmpegDir = ffmpegPath ? `--ffmpeg-dir ${quotePath(ffmpegPath)}` : "";
+  const ffmpegPath = elements.ffmpegDir.value.trim() || "C:\\tools\\ffmpeg-8.1.2-essentials_build\\bin";
+  const ffmpegDir = `--ffmpeg-dir ${quotePath(ffmpegPath)}`;
   const overlayFont = elements.overlayFont?.value.trim() || "C:\\Windows\\Fonts\\msyh.ttc";
-  const configDir = `--config-dir ${quotePath("$env:LOCALAPPDATA\\OverlayDesigner\\config")}`;
+  const configDir = `--config-dir ${quotePath(".\\map-config")}`;
   const mapStyle = elements.mapStyle.value || "cyclosm";
   const mapApiKey = elements.mapApiKey?.value.trim() || "";
   const mapApiKeyArg = mapApiKey ? `--map-api-key ${quotePath(mapApiKey)}` : "";
   const encoderProfile = elements.encoderProfile?.value || "cpu";
   const encoderArg = encoderProfile && encoderProfile !== "cpu" ? `--profile ${encoderProfile}` : "";
-  const cacheDir = `--cache-dir ${quotePath("$env:LOCALAPPDATA\\OverlayDesigner\\map-cache")}`;
+  const cacheDir = `--cache-dir ${quotePath(".\\map-cache")}`;
   const mapProxy = normalizeMapProxy(elements.mapProxy?.value || "http://127.0.0.1:10808");
   const proxyPrefix = elements.useMapProxy?.checked && mapProxy ? `$env:HTTP_PROXY=${quotePath(mapProxy)}; $env:HTTPS_PROXY=${quotePath(mapProxy)}; $env:ALL_PROXY=${quotePath(mapProxy)}; ` : "";
   const compareGps = useExternalData && elements.compareGps.checked;
@@ -1067,7 +1587,7 @@ function buildCommand() {
       `ffmpeg -i ${videoPath} -c copy ${outputPath}`,
       "",
       "# \u6216\u8005\u7528\u7a7a XML \u4fdd\u6301\u540c\u4e00\u5957\u6d41\u7a0b\uff1a",
-      [`.\\venv\\Scripts\\python.exe .\\venv\\Scripts\\gopro-dashboard.py`, ffmpegDir, `--layout xml`, `--layout-xml "$env:LOCALAPPDATA\\OverlayDesigner\\runtime\\empty-layout.xml"`, videoPath, `"clean-dashboard.mp4"`].filter(Boolean).join(" ")
+      [`.\\venv\\Scripts\\python.exe .\\venv\\Scripts\\gopro-dashboard.py`, ffmpegDir, `--layout xml`, `--layout-xml ".\\empty-layout.xml"`, videoPath, `"clean-dashboard.mp4"`].filter(Boolean).join(" ")
     ].join("\n");
   }
 
@@ -1085,7 +1605,7 @@ function buildCommand() {
     mapApiKeyArg,
     cacheDir,
     `--layout xml`,
-    `--layout-xml "$env:LOCALAPPDATA\\OverlayDesigner\\runtime\\my-layout.xml"`,
+    `--layout-xml ".\\my-layout.xml"`,
     `--units-speed ${speed}`,
     `--units-altitude ${alt}`
   ];
@@ -1121,7 +1641,7 @@ function toggleMapApiKeyVisibility() {
   const reveal = elements.mapApiKey.type === "password";
   elements.mapApiKey.type = reveal ? "text" : "password";
   if (button) {
-    button.textContent = reveal ? "隐藏" : "显示";
+    button.textContent = reveal ? t("hide") : t("show");
     button.setAttribute("aria-pressed", String(reveal));
   }
 }
@@ -1160,9 +1680,7 @@ async function loadAppSettings() {
     applyControlValue(elements.ffmpegDir, settings.ffmpegDir);
     applyControlValue(elements.overlayFont, settings.overlayFont);
     applyControlValue(elements.mapStyle, settings.mapStyle);
-    if (payload.hasMapApiKey && elements.mapApiKey) {
-      elements.mapApiKey.placeholder = "已保存到本机（留空继续使用）";
-    }
+    applyControlValue(elements.mapApiKey, settings.mapApiKey);
     applyControlValue(elements.mapZoom, settings.mapZoom);
     applyControlValue(elements.useMapProxy, settings.useMapProxy);
     applyControlValue(elements.mapProxy, settings.mapProxy);
@@ -1179,22 +1697,18 @@ async function loadAppSettings() {
 }
 
 async function saveAppSettings() {
-  if (elements.settingsSaveState) elements.settingsSaveState.textContent = "正在保存...";
+  if (elements.settingsSaveState) elements.settingsSaveState.textContent = t("saving");
   try {
-    const result = await postJson("/api/settings", collectAppSettings());
-    if (result.hasMapApiKey && elements.mapApiKey) {
-      elements.mapApiKey.value = "";
-      elements.mapApiKey.placeholder = "已保存到本机（留空继续使用）";
-    }
-    if (elements.settingsSaveState) elements.settingsSaveState.textContent = "已保存";
+    await postJson("/api/settings", collectAppSettings());
+    if (elements.settingsSaveState) elements.settingsSaveState.textContent = t("saved");
   } catch (error) {
-    if (elements.settingsSaveState) elements.settingsSaveState.textContent = `保存失败：${String(error.message || error)}`;
+    if (elements.settingsSaveState) elements.settingsSaveState.textContent = formatText("saveFailed", { error: String(error.message || error) });
   }
 }
 
 async function detectHardwareEncoders(force = false) {
   if (!elements.hardwareStatus) return;
-  elements.hardwareStatus.textContent = "正在实际试编码 NVENC / QSV / AMF...";
+  elements.hardwareStatus.textContent = t("detectingHardware");
   try {
     const ffmpegDir = elements.ffmpegDir?.value.trim() || "";
     const query = new URLSearchParams({ ffmpegDir });
@@ -1205,26 +1719,27 @@ async function detectHardwareEncoders(force = false) {
     const profiles = payload.profiles || {};
     let selectedUnavailable = false;
     Array.from(elements.encoderProfile?.options || []).forEach((option) => {
-      const baseLabel = option.dataset.baseLabel || option.textContent.replace(/（当前不可用）$/, "");
+      const baseLabel = option.dataset.baseLabel || t("encoderModes")[option.value] || option.textContent;
       option.dataset.baseLabel = baseLabel;
       const result = profiles[option.value];
       const unavailable = result && result.available === false;
+      option.dataset.unavailable = String(Boolean(unavailable));
       option.disabled = Boolean(unavailable);
-      option.textContent = unavailable ? `${baseLabel}（当前不可用）` : baseLabel;
+      option.textContent = unavailable ? `${baseLabel} (${t("unavailable")})` : baseLabel;
       option.title = result?.detail || "";
       if (option.selected && unavailable) selectedUnavailable = true;
     });
     if (selectedUnavailable) elements.encoderProfile.value = "cpu";
-    const gpuNames = (payload.gpus || []).join(" / ") || "未读取到显卡名称";
+    const gpuNames = (payload.gpus || []).join(" / ") || t("noGpuName");
     const available = Object.entries(profiles)
       .filter(([name, result]) => name !== "cpu" && result.available)
       .map(([name]) => ({ nvgpu: "NVENC", nnvgpu: "CUDA overlay", qsv: "Intel QSV", amf_h264: "AMD AMF" })[name] || name);
     const amf = profiles.amf_h264;
-    const amfText = amf?.available ? "AMD AMF 可用" : "AMD AMF 当前不可用（需要 AMD 显卡与驱动）";
-    elements.hardwareStatus.textContent = `${gpuNames}\n可用加速：${available.join("、") || "无"}\n${amfText}`;
+    const amfText = amf?.available ? t("amfAvailable") : t("amfUnavailable");
+    elements.hardwareStatus.textContent = `${gpuNames}\n${formatText("availableAcceleration", { items: available.join(currentLanguage === "en" ? ", " : "、") || t("none") })}\n${amfText}`;
     if (selectedUnavailable) render();
   } catch (error) {
-    elements.hardwareStatus.textContent = `显卡检测失败：${String(error.message || error)}`;
+    elements.hardwareStatus.textContent = formatText("hardwareFailed", { error: String(error.message || error) });
   }
 }
 
@@ -1261,6 +1776,12 @@ function bindControls() {
 
   elements.themeSelect?.addEventListener("change", () => {
     applyTheme(elements.themeSelect.value);
+  });
+
+  elements.languageSelect?.addEventListener("change", () => {
+    applyLanguage(elements.languageSelect.value);
+    initializeLogHistory().catch(() => {});
+    if (!viewingArchivedLog) pollRenderStatus().catch(() => {});
   });
 
   elements.useExternalData.addEventListener("change", () => {
@@ -1568,23 +2089,23 @@ function setRenderProgress(percent, label, detail) {
   const value = clamp(Math.round(percent || 0), 0, 100);
   elements.progressFill.style.width = `${value}%`;
   elements.progressPercent.textContent = `${value}%`;
-  elements.progressLabel.textContent = label || "\u7b49\u5f85\u5bfc\u51fa";
+  elements.progressLabel.textContent = label || t("waitingExport");
   elements.progressDetail.textContent = detail || "";
 }
 
 function parseRenderProgress(log, status) {
   const text = log || "";
   if (status?.returncode === 0) {
-    return { percent: 100, label: "\u5bfc\u51fa\u5b8c\u6210", detail: status.output ? `\u8f93\u51fa\u6587\u4ef6\uff1a${status.output}` : "" };
+    return { percent: 100, label: t("exportComplete"), detail: status.output ? formatText("outputFile", { path: status.output }) : "" };
   }
   if (status?.returncode != null) {
-    return { percent: 100, label: "\u5bfc\u51fa\u5931\u8d25", detail: `\u9000\u51fa\u7801\uff1a${status.returncode}\u3002\u8bf7\u67e5\u770b\u4e0b\u65b9\u65e5\u5fd7\u3002` };
+    return { percent: 100, label: currentLanguage === "en" ? "Export failed" : "导出失败", detail: currentLanguage === "en" ? `Exit code: ${status.returncode}. See the log below.` : `退出码：${status.returncode}。请查看下方日志。` };
   }
   if (text.includes("Waiting for ffmpeg to complete") || text.includes("waiting for ffmpeg to catch up")) {
-    return { percent: 98, label: "\u7b49\u5f85 FFmpeg \u5c01\u88c5\u89c6\u9891", detail: "\u753b\u9762\u5df2\u7ecf\u7ed8\u5236\u5b8c\u6210\uff0c\u6b63\u5728\u5199\u5165\u6700\u7ec8\u89c6\u9891\u6587\u4ef6\u3002" };
+    return { percent: 98, label: t("waitingFfmpeg"), detail: t("waitingFfmpegDetail") };
   }
   if (text.includes("Cannot download a tile")) {
-    return { percent: status?.running ? 15 : 100, label: "\u5730\u56fe\u5e95\u56fe\u4e0b\u8f7d\u5931\u8d25", detail: "\u8f68\u8ff9\u7ebf\u53ef\u4ee5\u751f\u6210\uff0c\u4f46\u5e95\u56fe\u74e6\u7247\u6ca1\u6709\u4e0b\u8f7d\u5b8c\u6574\u3002\u5efa\u8bae\u4fdd\u7559 CyclOSM\u3001\u7a0d\u540e\u91cd\u8bd5\uff0c\u6216\u5148\u53d6\u6d88\u5730\u56fe\u6d6e\u7a97\u3002" };
+    return { percent: status?.running ? 15 : 100, label: t("mapTilesFailed"), detail: t("mapTilesFailedDetail") };
   }
   const renderLines = text.split(/\r?\n|\r/).filter((line) => line.includes("Render:") && line.includes("["));
   if (renderLines.length > 0) {
@@ -1596,33 +2117,34 @@ function parseRenderProgress(log, status) {
     const etaIndex = last.indexOf("ETA:");
     const timeIndex = last.indexOf("Time:");
     const eta = etaIndex >= 0 ? last.slice(etaIndex + 4).trim() : timeIndex >= 0 ? last.slice(timeIndex + 5).trim() : "";
-    return { percent, label: percent >= 100 ? "\u5e27\u7ed8\u5236\u5b8c\u6210" : "\u6b63\u5728\u7ed8\u5236\u6d6e\u7a97\u5e27", detail: [rate ? `\u901f\u5ea6 ${rate}` : "", eta ? `\u5269\u4f59/\u8017\u65f6 ${eta}` : ""].filter(Boolean).join(" ? ") };
+    return { percent, label: percent >= 100 ? t("framesComplete") : t("drawingFrames"), detail: [rate ? formatText("renderSpeed", { value: rate }) : "", eta ? formatText("remainingElapsed", { value: eta }) : ""].filter(Boolean).join(" · ") };
   }
   const gpsAlignment = text.match(/GPS position sync: Garmin-GoPro offset ([+-]?\d+(?:\.\d+)?)s, median error (\d+(?:\.\d+)?)m/);
   if (gpsAlignment) {
     return {
       percent: 4,
-      label: "GPS \u4f4d\u7f6e\u62df\u5408\u5b8c\u6210",
-      detail: `\u5df2\u81ea\u52a8\u6821\u6b63 ${gpsAlignment[1]} \u79d2\uff0c\u8f68\u8ff9\u4e2d\u4f4d\u8bef\u5dee ${gpsAlignment[2]} \u7c73\u3002`
+      label: t("gpsAlignmentComplete"),
+      detail: formatText("gpsAlignmentDetail", { offset: gpsAlignment[1], error: gpsAlignment[2] })
     };
   }
   if (text.includes("Processing")) {
-    return { percent: 5, label: "\u6b63\u5728\u51c6\u5907\u6e32\u67d3", detail: "\u5df2\u5f00\u59cb\u8bfb\u53d6\u89c6\u9891\u548c GPS \u6570\u636e\u3002" };
+    return { percent: 5, label: t("preparingRender"), detail: t("preparingRenderDetail") };
   }
   if (status?.running) {
-    return { percent: 2, label: "\u5bfc\u51fa\u5df2\u542f\u52a8", detail: "\u7b49\u5f85\u7b2c\u4e00\u6279\u8fdb\u5ea6\u65e5\u5fd7\u3002" };
+    return { percent: 2, label: t("exportStarted"), detail: t("exportStartedDetail") };
   }
-  return { percent: 0, label: "\u7b49\u5f85\u5bfc\u51fa", detail: "\u9009\u62e9\u89c6\u9891\u540e\u70b9\u51fb\u201c\u5f00\u59cb\u5bfc\u51fa\u201d\u3002" };
+    return { percent: 0, label: t("waitingExport"), detail: t("selectVideoToExport") };
 }
 
 function showServerHint(error) {
   elements.renderStatus.textContent = [
-    "\u8bf7\u6c42\u5931\u8d25\u3002\u53ef\u80fd\u662f\u670d\u52a1\u672a\u542f\u52a8\u3001\u8def\u5f84\u586b\u5199\u9519\u8bef\uff0c\u6216\u5f53\u524d\u5df2\u6709\u5bfc\u51fa\u4efb\u52a1\u3002",
+    t("serverHint"),
     "",
-    "\u8bf7\u56de\u5230\u7a0b\u5e8f\u76ee\u5f55\u53cc\u51fb start-panel.bat\uff0c\u6216\u5728 PowerShell \u8fd0\u884c\uff1a",
-    "powershell -ExecutionPolicy Bypass -File .\\start-panel.ps1",
+    t("runInPowerShell"),
+    "cd C:\\Users\\hhh\\Documents\\CYBO\\gopro-overlay-panel",
+    ".\\start-panel.ps1",
     "",
-    "\u7136\u540e\u7528\u811a\u672c\u8f93\u51fa\u7684 http://127.0.0.1:\u7aef\u53e3/ \u6253\u5f00\u7f51\u9875\u3002",
+    t("thenOpenBrowser"),
     "",
     String(error.message || error)
   ].join("\n");
@@ -1631,8 +2153,8 @@ function showServerHint(error) {
 async function saveLayoutLocal() {
   try {
     const result = await postJson("/api/save-layout", renderPayload());
-    setRenderProgress(0, "\u5e03\u5c40\u5df2\u4fdd\u5b58", result.path);
-    elements.renderStatus.textContent = `\u5df2\u4fdd\u5b58\u5e03\u5c40\uff1a${result.path}`;
+    setRenderProgress(0, t("layoutSaved"), result.path);
+    elements.renderStatus.textContent = `${t("layoutSaved")}: ${result.path}`;
   } catch (error) {
     showServerHint(error);
   }
@@ -1682,10 +2204,10 @@ async function generatePreviewFrame() {
     return;
   }
   try {
-    elements.renderStatus.textContent = "\u6b63\u5728\u751f\u6210\u771f\u5b9e\u9884\u89c8\u5e27\uff0c\u5730\u56fe\u6a21\u677f\u53ef\u80fd\u9700\u8981\u7b49\u74e6\u7247\u4e0b\u8f7d...";
+    elements.renderStatus.textContent = t("previewGenerating");
     const result = await postJson("/api/preview-frame", renderPayload());
     state.previewFrameUrl = result.url;
-    elements.renderStatus.textContent = `\u771f\u5b9e\u9884\u89c8\u5e27\u5df2\u751f\u6210\uff1a${result.path}`;
+    elements.renderStatus.textContent = formatText("previewGenerated", { path: result.path });
     renderStage();
   } catch (error) {
     showServerHint(error);
@@ -1712,13 +2234,13 @@ async function refreshLogHistory(preferred = null) {
     (payload.logs || []).forEach((record) => {
       const option = document.createElement("option");
       option.value = record.name;
-      option.textContent = record.label;
+      option.textContent = record.name === "current" ? t("currentLog") : record.label;
       logHistorySelect.appendChild(option);
     });
     if (!logHistorySelect.options.length) {
       const option = document.createElement("option");
       option.value = "current";
-      option.textContent = "\u5f53\u524d / \u6700\u8fd1\u4e00\u6b21";
+      option.textContent = t("currentLog");
       logHistorySelect.appendChild(option);
     }
     logHistorySelect.value = Array.from(logHistorySelect.options).some((option) => option.value === previous) ? previous : "current";
@@ -1738,9 +2260,9 @@ async function showSelectedLog() {
     const response = await fetch(`/api/log?name=${encodeURIComponent(logHistorySelect.value)}`, { cache: "no-store" });
     if (!response.ok) throw new Error(`Log read failed: ${response.status}`);
     const payload = await response.json();
-    elements.renderStatus.textContent = payload.text || "\u65e5\u5fd7\u4e3a\u7a7a\u3002";
+    elements.renderStatus.textContent = payload.text || t("logEmpty");
   } catch (error) {
-    elements.renderStatus.textContent = `\u8bfb\u53d6\u5386\u53f2\u65e5\u5fd7\u5931\u8d25\uff1a${String(error.message || error)}`;
+    elements.renderStatus.textContent = formatText("logReadFailed", { error: String(error.message || error) });
   }
 }
 
@@ -1750,14 +2272,14 @@ async function initializeLogHistory() {
   const toolbar = document.createElement("div");
   toolbar.className = "log-history-toolbar";
   const label = document.createElement("span");
-  label.textContent = "\u6700\u8fd1\u65e5\u5fd7";
+  label.textContent = t("recentLogs");
   logHistorySelect = document.createElement("select");
   logHistorySelect.id = "logHistory";
-  logHistorySelect.setAttribute("aria-label", "\u6700\u8fd1\u5bfc\u51fa\u65e5\u5fd7");
+  logHistorySelect.setAttribute("aria-label", t("recentLogs"));
   const refresh = document.createElement("button");
   refresh.type = "button";
-  refresh.textContent = "\u5237\u65b0";
-  refresh.title = "\u5237\u65b0\u65e5\u5fd7\u5217\u8868";
+  refresh.textContent = t("refresh");
+  refresh.title = t("refreshLogList");
   toolbar.append(label, logHistorySelect, refresh);
   body.insertBefore(toolbar, elements.renderStatus);
   logHistorySelect.addEventListener("change", showSelectedLog);
@@ -1777,7 +2299,7 @@ async function cancelRender() {
   try {
     const result = await postJson("/api/cancel", {});
     setRenderRunning(false);
-    setRenderProgress(0, "\u5bfc\u51fa\u5df2\u53d6\u6d88", result.message || "\u5f53\u524d\u5bfc\u51fa\u8fdb\u7a0b\u5df2\u505c\u6b62\u3002");
+    setRenderProgress(0, t("exportCanceled"), result.message || t("exportCanceledDetail"));
     await pollRenderStatus();
   } catch (error) {
     showServerHint(error);
@@ -1790,8 +2312,8 @@ async function startRender() {
     normalizeOutputField();
     const result = await postJson("/api/render", renderPayload());
     setRenderRunning(true);
-    setRenderProgress(1, "\u5bfc\u51fa\u5df2\u542f\u52a8", "\u6b63\u5728\u542f\u52a8 gopro-dashboard-overlay\u3002");
-    elements.renderStatus.textContent = `\u5df2\u5f00\u59cb\u5bfc\u51fa\uff0cPID ${result.pid}\n\u8f93\u51fa\u6587\u4ef6\uff1a${result.output}\n\u65e5\u5fd7\uff1a${result.log}`;
+    setRenderProgress(1, t("exportStarted"), t("exportStartingDetail"));
+    elements.renderStatus.textContent = `${t("exportStarted")}, PID ${result.pid}\n${formatText("outputFile", { path: result.output })}\n${currentLanguage === "en" ? "Log" : "日志"}: ${result.log}`;
     viewingArchivedLog = false;
     await refreshLogHistory("current");
     renderPollFailures = 0;
@@ -1813,10 +2335,10 @@ async function pollRenderStatus() {
     const progress = parseRenderProgress(status.log || "", status);
     setRenderProgress(progress.percent, progress.label, progress.detail);
     const lines = [
-      status.running ? "\u6b63\u5728\u5bfc\u51fa..." : status.returncode === 0 ? "\u5bfc\u51fa\u5b8c\u6210\u3002" : status.returncode == null ? "\u5c1a\u672a\u5f00\u59cb\u5bfc\u51fa\u3002" : `\u5bfc\u51fa\u7ed3\u675f\uff0c\u9000\u51fa\u7801\uff1a${status.returncode}`,
-      status.output ? `\u8f93\u51fa\u6587\u4ef6\uff1a${status.output}` : "",
-      status.started ? `\u5f00\u59cb\u65f6\u95f4\uff1a${status.started}` : "",
-      progress.detail ? `\u8fdb\u5ea6\uff1a${progress.percent}% \u00b7 ${progress.detail}` : `\u8fdb\u5ea6\uff1a${progress.percent}%`,
+      status.running ? t("exporting") : status.returncode === 0 ? t("exportComplete") : status.returncode == null ? t("exportNotStarted") : formatText("exportEnded", { code: status.returncode }),
+      status.output ? formatText("outputFile", { path: status.output }) : "",
+      status.started ? formatText("startedAt", { time: status.started }) : "",
+      progress.detail ? `${formatText("progress", { percent: progress.percent })} · ${progress.detail}` : formatText("progress", { percent: progress.percent }),
       "",
       status.log || ""
     ];
@@ -1831,14 +2353,14 @@ async function pollRenderStatus() {
     if (renderPollTimer) {
       const previous = lastRenderStatusText || elements.renderStatus.textContent || "";
       const retryNote = [
-        "\u8fdb\u5ea6\u8fde\u63a5\u6682\u65f6\u4e2d\u65ad\uff0c\u6b63\u5728\u81ea\u52a8\u91cd\u8bd5\u3002",
-        `\u8fde\u7eed\u5931\u8d25\u6b21\u6570\uff1a${renderPollFailures}`,
-        `\u6700\u540e\u9519\u8bef\uff1a${String(error.message || error)}`,
+        t("connectionInterrupted"),
+        formatText("consecutiveFailures", { count: renderPollFailures }),
+        formatText("lastError", { error: String(error.message || error) }),
         "",
         previous
       ];
       if (!viewingArchivedLog) elements.renderStatus.textContent = retryNote.filter(Boolean).join("\n");
-      setRenderProgress(2, "\u8fdb\u5ea6\u8fde\u63a5\u91cd\u8bd5\u4e2d", "\u540e\u53f0\u5bfc\u51fa\u4efb\u52a1\u53ef\u80fd\u4ecd\u5728\u8fd0\u884c\uff0c\u7f51\u9875\u4f1a\u7ee7\u7eed\u8f6e\u8be2\u3002");
+      setRenderProgress(2, t("progressRetrying"), t("progressRetryDetail"));
       return;
     }
     showServerHint(error);
@@ -1963,7 +2485,8 @@ configureMergeModes();
 configureEncoderOptions();
 configureVideoQualityControl();
 configureMapZoomControl();
-renderPalette();
+captureStaticTextNodes();
+applyLanguage(currentLanguage, false);
 applyTheme(localStorage.getItem("overlayDesignerTheme") || "night", false);
 bindControls();
 

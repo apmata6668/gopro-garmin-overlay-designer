@@ -25,6 +25,7 @@ satellite imagery, and GoPro/Garmin GPS comparison and alignment tools.
 - Use CyclOSM, OpenStreetMap, or Mapbox satellite map tiles.
 - Detect CPU, NVIDIA NVENC/CUDA, Intel QSV, and AMD AMF encoding options.
 - Monitor render progress, cancel running jobs, and review recent render logs.
+- Switch the interface between Chinese and English; the selection is remembered locally.
 
 ## Requirements
 
@@ -87,6 +88,7 @@ for additional details.
 - 支持 CyclOSM、OpenStreetMap 和 Mapbox 卫星地图。
 - 检测 CPU、NVIDIA NVENC/CUDA、Intel QSV 和 AMD AMF。
 - 显示导出进度、取消任务并保留最近十条日志。
+- 支持中文和 English 界面切换，选择会保存在本机浏览器中。
 
 ## 系统要求
 

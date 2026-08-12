@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GoPro / Garmin Overlay Panel</title>
-  <link rel="stylesheet" href="./styles.css?v=20260717-1">
+  <title>GoPro / Garmin Overlay Designer</title>
+  <script>
+    document.documentElement.dataset.theme = localStorage.getItem("overlayDesignerTheme") || "night";
+  </script>
+  <link rel="stylesheet" href="./styles.css?v=20260813-2">
 </head>
 <body>
 <main class="app-shell">
@@ -68,7 +71,7 @@
   <section class="stage-area">
     <header class="workspace-header">
       <div class="workspace-title"><span class="eyebrow">OVERLAY CANVAS</span><h2>&#28014;&#31383;&#24067;&#23616;&#39044;&#35272;</h2></div>
-      <div class="primary-actions"><button id="previewFrame" type="button">&#30495;&#23454;&#39044;&#35272;</button><button id="saveLayoutLocal" class="save-action" type="button">&#20445;&#23384;&#24067;&#23616;</button><button id="savePreset" type="button">&#20445;&#23384;&#39044;&#35774;</button><button id="loadPreset" type="button">&#35835;&#21462;&#39044;&#35774;</button><button id="startRender" class="primary" type="button">&#23548;&#20986;&#35270;&#39057;</button><button id="cancelRender" class="danger hidden" type="button">&#21462;&#28040;&#23548;&#20986;</button><details class="toolbar-menu"><summary>&#26356;&#22810;</summary><div class="toolbar-menu-panel"><div class="menu-section"><span class="menu-label">&#36755;&#20986;&#26041;&#24335;</span><div class="menu-modes" role="group" aria-label="&#24037;&#20316;&#27169;&#24335;"><button id="modeBurnIn" class="active" type="button" data-mode="burn">&#28903;&#24405;</button><button id="modeOverlay" type="button" data-mode="overlay">&#36879;&#26126;&#23618;</button><button id="modeClean" type="button" data-mode="clean">&#26080;&#28014;&#31383;</button></div></div><label class="theme-control"><span class="menu-label">&#30028;&#38754;&#20027;&#39064;</span><span class="theme-select-wrap"><i class="theme-swatch" aria-hidden="true"></i><select id="themeSelect" aria-label="&#30028;&#38754;&#20027;&#39064;"><option value="night">&#22812;&#38388;&#27169;&#24335;</option><option value="day">&#30333;&#22825;&#27169;&#24335;</option><option value="green">&#27973;&#32511;&#27169;&#24335;</option></select></span></label><button id="fitPreset" type="button">&#25512;&#33616; Garmin</button><button id="compareGpsPreset" type="button">GPS &#23545;&#27604;</button><button id="clearWidgets" type="button">&#28165;&#31354;&#28014;&#31383;</button><button id="downloadXml" type="button">&#19979;&#36733; XML</button></div></details></div>
+      <div class="primary-actions"><button id="previewFrame" type="button">&#30495;&#23454;&#39044;&#35272;</button><button id="saveLayoutLocal" class="save-action" type="button">&#20445;&#23384;&#24067;&#23616;</button><button id="savePreset" type="button">&#20445;&#23384;&#39044;&#35774;</button><button id="loadPreset" type="button">&#35835;&#21462;&#39044;&#35774;</button><button id="startRender" class="primary" type="button">&#23548;&#20986;&#35270;&#39057;</button><button id="cancelRender" class="danger hidden" type="button">&#21462;&#28040;&#23548;&#20986;</button><label class="language-control"><span class="sr-only">Language</span><select id="languageSelect" aria-label="Language"><option value="zh-CN">中文</option><option value="en">English</option></select></label><details class="toolbar-menu"><summary>&#26356;&#22810;</summary><div class="toolbar-menu-panel"><div class="menu-section"><span class="menu-label">&#36755;&#20986;&#26041;&#24335;</span><div class="menu-modes" role="group" aria-label="&#24037;&#20316;&#27169;&#24335;"><button id="modeBurnIn" class="active" type="button" data-mode="burn">&#28903;&#24405;</button><button id="modeOverlay" type="button" data-mode="overlay">&#36879;&#26126;&#23618;</button><button id="modeClean" type="button" data-mode="clean">&#26080;&#28014;&#31383;</button></div></div><label class="theme-control"><span class="menu-label">&#30028;&#38754;&#20027;&#39064;</span><span class="theme-select-wrap"><i class="theme-swatch" aria-hidden="true"></i><select id="themeSelect" aria-label="&#30028;&#38754;&#20027;&#39064;"><option value="night">&#22812;&#38388;&#27169;&#24335;</option><option value="day">&#30333;&#22825;&#27169;&#24335;</option><option value="green">&#27973;&#32511;&#27169;&#24335;</option></select></span></label><button id="fitPreset" type="button">&#25512;&#33616; Garmin</button><button id="compareGpsPreset" type="button">GPS &#23545;&#27604;</button><button id="clearWidgets" type="button">&#28165;&#31354;&#28014;&#31383;</button><button id="downloadXml" type="button">&#19979;&#36733; XML</button></div></details></div>
     </header>
     <div class="stage-wrap"><div id="stage" class="stage" aria-label="Overlay design canvas"><div class="safe-zone"></div><div class="video-label">16:9 SAFE AREA</div></div></div>
     <section class="workspace-bottom">
@@ -78,6 +81,6 @@
     <textarea id="xmlOutput" class="hidden" spellcheck="false" aria-hidden="true"></textarea>
   </section>
 </main>
-<input id="presetFile" class="hidden" type="file" accept="application/json"><script src="./app.js?v=20260717-1"></script>
+<input id="presetFile" class="hidden" type="file" accept="application/json"><script src="./app.js?v=20260813-3"></script>
 </body>
 </html>
