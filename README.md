@@ -1,8 +1,80 @@
 # GoPro / Garmin Overlay Designer
 
-一个在 Windows 本地运行的可视化面板，用于把 GoPro GPS/IMU 与 Garmin FIT/GPX 数据制作成视频浮窗。项目基于 [time4tea/gopro-dashboard-overlay](https://github.com/time4tea/gopro-dashboard-overlay)，支持拖动布局、官方模板、真实帧预览、地图、GPU 编码和一键导出。
+**English** | [中文说明](#中文说明)
+
+A local Windows application for designing and rendering telemetry overlays on
+GoPro videos. It combines the GPS and IMU metadata embedded in GoPro footage
+with optional Garmin FIT/GPX activity data, then lets you arrange gauges, maps,
+charts, and metrics visually before exporting the finished video.
+
+Built on [time4tea/gopro-dashboard-overlay](https://github.com/time4tea/gopro-dashboard-overlay),
+the project adds a browser-based layout editor, editable upstream XML presets,
+real-frame previews, render progress, hardware encoder detection, Mapbox
+satellite imagery, and GoPro/Garmin GPS comparison and alignment tools.
 
 ![Overlay Designer](docs/images/overlay-designer.png)
+
+## Key Features
+
+- Read speed, altitude, GPS tracks, and IMU data directly from supported GoPro videos.
+- Add Garmin heart rate, cadence, power, altitude, speed, and route data from FIT/GPX files.
+- Align GoPro and Garmin telemetry by timestamp or matched GPS positions.
+- Drag, resize, duplicate, hide, and remove overlay widgets in a visual canvas.
+- Start from bundled upstream XML layouts and continue editing them visually.
+- Export a burned-in video, a transparent overlay MOV, or a clean video copy.
+- Use CyclOSM, OpenStreetMap, or Mapbox satellite map tiles.
+- Detect CPU, NVIDIA NVENC/CUDA, Intel QSV, and AMD AMF encoding options.
+- Monitor render progress, cancel running jobs, and review recent render logs.
+
+## Requirements
+
+- 64-bit Windows 10 or Windows 11
+- Python 3.11 or newer
+- FFmpeg with H.264 support
+- A GoPro MP4 file; Garmin FIT/GPX data is optional
+
+## Quick Start
+
+Download `OverlayDesignerWindows.zip` from the
+[latest release](https://github.com/apmata6668/gopro-garmin-overlay-designer/releases/latest),
+extract it, and double-click:
+
+```text
+setup-and-start.bat
+```
+
+The setup script creates a local Python environment and installs the pinned
+`gopro-overlay==0.134.0` dependency. Add FFmpeg to `PATH`, or select its `bin`
+folder in the application's advanced settings.
+
+To install from a Git clone instead, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\install-gopro-overlay-windows.ps1
+```
+
+Then launch the application with `start-panel.bat`.
+
+## Data Sources
+
+For action sports such as downhill and enduro MTB, a useful starting point is:
+
+- GoPro for speed, short-term movement, and acceleration.
+- Garmin for heart rate, cadence, power, and usually altitude.
+- Timestamp alignment by default; GPS position alignment when both tracks are reliable.
+
+All video and activity processing happens locally. Runtime layouts, settings,
+logs, and map caches are stored under `%LOCALAPPDATA%\OverlayDesigner`. Mapbox
+access tokens are not included in this repository or release package; users add
+their own token locally when satellite imagery is needed.
+
+See [Privacy and Data Handling](docs/privacy.md),
+[Packaging](docs/packaging.md), and [Third-Party Notices](THIRD_PARTY_NOTICES.md)
+for additional details.
+
+## 中文说明
+
+一个在 Windows 本地运行的可视化面板，用于把 GoPro GPS/IMU 与 Garmin FIT/GPX 数据制作成视频浮窗。项目基于 [time4tea/gopro-dashboard-overlay](https://github.com/time4tea/gopro-dashboard-overlay)，支持拖动布局、官方模板、真实帧预览、地图、GPU 编码和一键导出。
 
 ## 功能
 
