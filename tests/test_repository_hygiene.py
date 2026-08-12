@@ -1,10 +1,18 @@
 from pathlib import Path
 import xml.etree.ElementTree as ET
+import importlib.util
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP_PARTS = {".git", "venv", ".venv", "__pycache__"}
 TEXT_SUFFIXES = {".py", ".js", ".css", ".html", ".md", ".json", ".xml", ".ps1", ".bat", ".toml", ".yml", ".yaml"}
+
+
+def load_script(name, filename):
+    spec = importlib.util.spec_from_file_location(name, ROOT / filename)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def repository_files():
@@ -47,3 +55,11 @@ def test_official_layouts_are_well_formed_xml():
     for layout in layouts:
         root = ET.parse(layout).getroot()
         assert root.tag == "layout"
+
+
+def test_gps_patch_finds_dashboard_in_python_scripts_directory(monkeypatch, tmp_path):
+    module = load_script("enable_gps_alignment", "enable-gps-alignment.py")
+    dashboard = tmp_path / "gopro-dashboard.py"
+    dashboard.write_text("# entry point\n", encoding="utf-8")
+    monkeypatch.setattr(module.sysconfig, "get_path", lambda name: str(tmp_path))
+    assert module.installed_dashboard_script() == dashboard

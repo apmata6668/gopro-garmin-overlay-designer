@@ -1,5 +1,5 @@
 import shutil
-import sys
+import sysconfig
 from importlib.metadata import version
 from pathlib import Path
 
@@ -27,6 +27,16 @@ def replace_once(path, old, new, marker):
     if not backup.exists():
         shutil.copy2(path, backup)
     path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+
+def installed_dashboard_script():
+    scripts_dir = Path(sysconfig.get_path("scripts"))
+    candidates = [scripts_dir / "gopro-dashboard.py", scripts_dir / "gopro-dashboard"]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    expected = ", ".join(str(path) for path in candidates)
+    raise FileNotFoundError(f"Could not locate the installed gopro-dashboard entry point; checked: {expected}")
 
 
 def main():
@@ -85,9 +95,7 @@ def main():
         "def add_gpx_compare_metrics",
     )
 
-    dashboard = Path(sys.executable).resolve().parent / "gopro-dashboard.py"
-    if not dashboard.exists():
-        raise FileNotFoundError(f"Could not locate the installed gopro-dashboard.py next to {sys.executable}")
+    dashboard = installed_dashboard_script()
     import_anchor = "from gopro_overlay.framemeta_gpx import merge_gpx_with_gopro, timeseries_to_framemeta\n"
     replacement_import = (
         "from gopro_overlay.framemeta_gpx import add_gpx_compare_metrics, "
