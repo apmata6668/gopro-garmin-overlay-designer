@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.1 - 2026-08-13
+
+### Added
+
+- Chinese and English interface switch, remembered locally between sessions.
+- Localized overlay names, presets, export progress, hardware status, and recent-log controls.
+
+### Changed
+
+- Tagged CI builds now publish `OverlayDesignerWindows.zip` directly to GitHub Releases.
+
 ## 0.1.0 - 2026-07-17
 
 ### Added
