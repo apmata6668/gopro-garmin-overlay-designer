@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Apply compatibility modules
+        run: |
+          python enable-mapbox-provider.py
+          python enable-gps-alignment.py
+      - name: Compile Python sources
+        run: python -m py_compile panel-server.py preview-frame.py render-wrapper.py gps_alignment.py enable-gps-alignment.py enable-mapbox-provider.py
+      - name: Run tests
+        run: python -m pytest
+      - name: Build Windows installation package
+        shell: powershell
+        run: .\scripts\build-windows-package.ps1
+      - name: Upload Windows package
+        uses: actions/upload-artifact@v4
+        with:
+          name: OverlayDesignerWindows
+          path: dist/OverlayDesignerWindows.zip
+          if-no-files-found: error

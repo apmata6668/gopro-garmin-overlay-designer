@@ -1,0 +1,52 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# User media and telemetry (large and privacy-sensitive)
+*.mp4
+*.mov
+*.m4v
+*.avi
+*.lrv
+*.360
+*.fit
+*.gpx
+*.csv
+
+# Generated runtime data
+map-cache/
+map-config/
+render-logs/
+render-log.txt
+preview-log.txt
+preview-frame.png
+render-state.json
+my-layout.xml
+empty-layout.xml
+test-*.png
+map-compare/
+
+# Secrets and local settings
+.env
+.env.*
+!.env.example
+map-api-keys.json
+settings.json
+
+# Build and packaging output
+build/
+dist/
+*.spec
+*.zip
+OverlayDesignerPortable*/
+OverlayDesignerWindows*/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

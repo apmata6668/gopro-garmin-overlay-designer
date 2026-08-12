@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoPro / Garmin Overlay Panel</title>
+  <link rel="stylesheet" href="./styles.css?v=20260717-1">
+</head>
+<body>
+<main class="app-shell">
+  <aside class="sidebar">
+    <header class="brand">
+      <span class="brand-mark">OD</span>
+      <div><h1>Overlay Designer</h1><p>GoPro + Garmin &#28014;&#31383;&#24067;&#23616;</p></div>
+    </header>
+
+    <section class="panel panel-project">
+      <div class="panel-heading"><h2>&#35270;&#39057;&#19982;&#36755;&#20986;</h2><span class="step-badge">1</span></div>
+      <label>GoPro &#35270;&#39057;&#36335;&#24452;<div class="input-action"><input id="videoPath" type="text" value="C:\Videos\GH010001.MP4"><button id="browseVideoPath" type="button">&#27983;&#35272;</button></div></label>
+      <label>&#36755;&#20986;&#25991;&#20214;&#22841;<div class="input-action"><input id="outputFolder" type="text" value="" placeholder="&#30041;&#31354;&#21017;&#20351;&#29992; GoPro &#35270;&#39057;&#25152;&#22312;&#25991;&#20214;&#22841;"><button id="browseOutputFolder" type="button">&#27983;&#35272;</button></div></label>
+      <label>&#36755;&#20986;&#25991;&#20214;&#21517;<input id="outputName" type="text" value="dashboard-output.mp4"></label>
+      <input id="outputPath" type="hidden" value="dashboard-output.mp4">
+      <label>&#26679;&#24335;&#39044;&#35774;<select id="layoutPreset"><option value="garmin" selected>&#21487;&#32534;&#36753; Garmin &#39569;&#34892;&#24067;&#23616;</option><option value="default-1920x1080.xml">&#23448;&#26041; Default 1080p</option><option value="default-3840x2160.xml">&#23448;&#26041; Default 4K</option><option value="power-1920x1080.xml">&#23448;&#26041; Power 1080p</option><option value="example.xml">&#23448;&#26041; Example &#32452;&#21512;&#28436;&#31034;</option><option value="example-2.xml">&#23448;&#26041; Example 2 &#34920;&#30424;&#28436;&#31034;</option><option value="moto_1080.xml">&#23448;&#26041; Moto 1080p</option><option value="moto_1080_2bars.xml">&#23448;&#26041; Moto 1080p &#21452;&#26465;</option><option value="moto_1080_needle.xml">&#23448;&#26041; Moto 1080p &#25351;&#38024;</option><option value="moto_2160.xml">&#23448;&#26041; Moto 4K</option><option value="moto_2160_2bars.xml">&#23448;&#26041; Moto 4K &#21452;&#26465;</option><option value="moto_2160_needle.xml">&#23448;&#26041; Moto 4K &#25351;&#38024;</option></select></label>
+    </section>
+
+    <section class="panel panel-data">
+      <div class="panel-heading"><h2>&#25968;&#25454;&#26469;&#28304;</h2><span class="step-badge">2</span></div>
+      <label class="check-row source-toggle"><input id="useGoproGps" type="checkbox" checked><span><strong>GoPro GPS</strong><small>&#35270;&#39057;&#33258;&#24102;&#36895;&#24230;&#12289;&#28023;&#25300;&#21644;&#36712;&#36857;</small></span></label>
+      <label class="check-row source-toggle"><input id="useGoproImu" type="checkbox"><span><strong>GoPro IMU</strong><small>&#35835;&#21462;&#35270;&#39057;&#20869;&#32622;&#21152;&#36895;&#24230;&#12289;&#37325;&#21147;&#21644;&#30456;&#26426;&#23039;&#24577;</small></span></label>
+      <div id="imuOptions" class="imu-options hidden">
+        <div class="imu-options-head"><span>IMU &#28014;&#31383;</span><small>ACCL / GRAV / CORI</small></div>
+        <div class="imu-palette">
+          <label class="imu-toggle"><input type="checkbox" data-imu-widget="imu_accel"><span>&#19977;&#36724; G &#21147;</span></label>
+          <label class="imu-toggle"><input type="checkbox" data-imu-widget="imu_gravity"><span>&#37325;&#21147;&#26041;&#21521;</span></label>
+          <label class="imu-toggle"><input type="checkbox" data-imu-widget="imu_orientation"><span>&#23039;&#24577;&#35282;</span></label>
+        </div>
+      </div>
+      <label class="check-row source-toggle"><input id="useExternalData" type="checkbox" checked><span><strong>Garmin FIT / GPX</strong><small>&#22806;&#37096;&#24515;&#29575;&#12289;&#36367;&#39057;&#12289;&#21151;&#29575;&#21644; GPS</small></span></label>
+      <label>Garmin FIT / GPX &#36335;&#24452;<div class="input-action"><input id="dataPath" type="text" value="C:\Garmin\activity.fit"><button id="browseDataPath" type="button">&#27983;&#35272;</button></div></label>
+      <label class="check-row"><input id="compareGps" type="checkbox"><span>GPS &#23545;&#27604;&#27169;&#24335;&#65306;&#21516;&#26102;&#20445;&#30041; GoPro &#21644; Garmin &#36895;&#24230;/&#28023;&#25300;/&#36317;&#31163;</span></label>
+      <label>&#25968;&#25454;&#21512;&#24182;&#26041;&#24335;<select id="mergeMode"><option value="EXTEND" selected>EXTEND&#65306;GoPro GPS + Garmin &#24515;&#29575;/&#36367;&#39057;/&#21151;&#29575;</option><option value="OVERWRITE">OVERWRITE&#65306;&#20248;&#20808; Garmin GPS/&#28023;&#25300;/&#36895;&#24230;</option></select></label>
+      <label>GPS &#21516;&#27493;&#26041;&#24335;<select id="gpsSync"><option value="time" selected>&#26102;&#38388;&#25311;&#21512;&#65288;&#40664;&#35748;&#65289;</option><option value="position">GPS &#20301;&#32622;&#25311;&#21512;&#65288;&#21452; GPS&#65289;</option></select></label>
+    </section>
+
+    <section class="panel panel-settings">
+      <div class="panel-heading"><h2>&#36755;&#20986;&#35774;&#32622;</h2><span class="step-badge">3</span></div>
+      <div class="two-cols"><label>&#36755;&#20986;&#23485;&#24230;<input id="canvasWidth" type="number" min="320" value="1920"></label><label>&#36755;&#20986;&#39640;&#24230;<input id="canvasHeight" type="number" min="180" value="1080"></label></div>
+      <div class="two-cols"><label>&#36895;&#24230;&#21333;&#20301;<select id="speedUnit"><option value="kph" selected>km/h</option><option value="mph">mph</option><option value="mps">m/s</option><option value="knots">knots</option></select></label><label>&#28023;&#25300;&#21333;&#20301;<select id="altUnit"><option value="metre" selected>m</option><option value="feet">ft</option></select></label></div>
+      <details class="settings-disclosure">
+        <summary><span>&#22320;&#22270;&#12289;&#20195;&#29702;&#19982;&#32534;&#30721;</span><small>&#39640;&#32423;&#35774;&#32622;</small></summary>
+        <div class="settings-body">
+          <label>&#23548;&#20986;&#32534;&#30721;<select id="encoderProfile"><option value="cpu" selected>CPU libx264&#65288;&#26368;&#31283;&#23450;&#65289;</option><option value="nvgpu">NVIDIA NVENC H.264</option><option value="nnvgpu">NVIDIA CUDA overlay&#65288;&#23454;&#39564;&#65289;</option><option value="qsv">Intel QSV HEVC&#65288;&#23454;&#39564;&#65289;</option><option value="amf_h264">AMD AMF H.264&#65288;&#23454;&#39564;&#65289;</option></select></label>
+          <label>ffmpeg bin &#25991;&#20214;&#22841;&#65288;&#21487;&#36873;&#65289;<input id="ffmpegDir" type="text" value="" placeholder="&#30041;&#31354;&#20174; PATH &#25110;&#20869;&#32622;&#30446;&#24405;&#33258;&#21160;&#26816;&#27979;"></label>
+          <label>&#28014;&#31383;&#23383;&#20307;<input id="overlayFont" type="text" value="C:\Windows\Fonts\msyh.ttc" placeholder="&#30041;&#31354;&#33258;&#21160;&#36873;&#25321;&#20013;&#25991;&#23383;&#20307;"></label>
+          <label>&#22320;&#22270;&#24213;&#22270;&#26679;&#24335;<select id="mapStyle"><option value="mapbox-satellite">Mapbox &#21355;&#26143;&#24433;&#20687;</option><option value="cyclosm" selected>CyclOSM &#39569;&#34892;&#22320;&#22270;&#65288;&#25512;&#33616;&#65289;</option><option value="osm">OpenStreetMap &#40664;&#35748;</option></select></label>
+          <label>Mapbox Access Token<div class="input-action"><input id="mapApiKey" type="password" value="" autocomplete="off" spellcheck="false" placeholder="pk.ey... &#65288;&#30041;&#31354;&#20351;&#29992; map-config&#65289;"><button id="toggleMapApiKey" type="button" aria-pressed="false">&#26174;&#31034;</button></div></label>
+          <label class="check-row"><input id="useMapProxy" type="checkbox"><span>&#22320;&#22270;&#19979;&#36733;&#20351;&#29992; v2rayN &#28151;&#21512;&#20195;&#29702;</span></label>
+          <label>&#22320;&#22270;&#20195;&#29702;&#22320;&#22336;<input id="mapProxy" type="text" value="http://127.0.0.1:10808" placeholder="http://127.0.0.1:10808"></label>
+          <div class="settings-actions"><button id="detectHardware" type="button">&#26816;&#27979;&#26174;&#21345;</button><button id="saveAppSettings" type="button">&#20445;&#23384;&#26412;&#26426;&#35774;&#32622;</button><span id="settingsSaveState" class="settings-save-state" aria-live="polite"></span></div>
+          <div id="hardwareStatus" class="hardware-status" aria-live="polite">&#31561;&#24453;&#26816;&#27979;&#32534;&#30721;&#22120;&#12290;</div>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel"><div class="panel-heading"><h2>&#36873;&#20013;&#28014;&#31383;</h2><span class="selection-dot"></span></div><div id="emptySelection" class="empty-state">&#28857;&#20987;&#30011;&#24067;&#20013;&#30340;&#28014;&#31383;&#21518;&#21487;&#25913;&#21517;&#12289;&#35843;&#22352;&#26631;&#21644;&#21024;&#38500;&#12290;</div><div id="selectionControls" class="selection-controls hidden"><label>&#21517;&#31216;<input id="widgetName" type="text"></label><div class="two-cols"><label>X<input id="widgetX" type="number" min="0"></label><label>Y<input id="widgetY" type="number" min="0"></label></div><div class="two-cols"><label>&#23610;&#23544;<input id="widgetScale" type="range" min="50" max="300" value="100"></label><label class="visibility-control">&#21487;&#35265;<input id="widgetVisible" type="checkbox" checked></label></div><div class="button-row"><button id="duplicateWidget" type="button">&#22797;&#21046;</button><button id="removeWidget" class="danger" type="button">&#21024;&#38500;</button></div></div><div id="hiddenWidgets" class="hidden-widgets"></div></section>
+  </aside>
+
+  <section class="stage-area">
+    <header class="workspace-header">
+      <div class="workspace-title"><span class="eyebrow">OVERLAY CANVAS</span><h2>&#28014;&#31383;&#24067;&#23616;&#39044;&#35272;</h2></div>
+      <div class="primary-actions"><button id="previewFrame" type="button">&#30495;&#23454;&#39044;&#35272;</button><button id="saveLayoutLocal" class="save-action" type="button">&#20445;&#23384;&#24067;&#23616;</button><button id="savePreset" type="button">&#20445;&#23384;&#39044;&#35774;</button><button id="loadPreset" type="button">&#35835;&#21462;&#39044;&#35774;</button><button id="startRender" class="primary" type="button">&#23548;&#20986;&#35270;&#39057;</button><button id="cancelRender" class="danger hidden" type="button">&#21462;&#28040;&#23548;&#20986;</button><details class="toolbar-menu"><summary>&#26356;&#22810;</summary><div class="toolbar-menu-panel"><div class="menu-section"><span class="menu-label">&#36755;&#20986;&#26041;&#24335;</span><div class="menu-modes" role="group" aria-label="&#24037;&#20316;&#27169;&#24335;"><button id="modeBurnIn" class="active" type="button" data-mode="burn">&#28903;&#24405;</button><button id="modeOverlay" type="button" data-mode="overlay">&#36879;&#26126;&#23618;</button><button id="modeClean" type="button" data-mode="clean">&#26080;&#28014;&#31383;</button></div></div><label class="theme-control"><span class="menu-label">&#30028;&#38754;&#20027;&#39064;</span><span class="theme-select-wrap"><i class="theme-swatch" aria-hidden="true"></i><select id="themeSelect" aria-label="&#30028;&#38754;&#20027;&#39064;"><option value="night">&#22812;&#38388;&#27169;&#24335;</option><option value="day">&#30333;&#22825;&#27169;&#24335;</option><option value="green">&#27973;&#32511;&#27169;&#24335;</option></select></span></label><button id="fitPreset" type="button">&#25512;&#33616; Garmin</button><button id="compareGpsPreset" type="button">GPS &#23545;&#27604;</button><button id="clearWidgets" type="button">&#28165;&#31354;&#28014;&#31383;</button><button id="downloadXml" type="button">&#19979;&#36733; XML</button></div></details></div>
+    </header>
+    <div class="stage-wrap"><div id="stage" class="stage" aria-label="Overlay design canvas"><div class="safe-zone"></div><div class="video-label">16:9 SAFE AREA</div></div></div>
+    <section class="workspace-bottom">
+      <article class="widget-dock"><div class="dock-header"><div><span class="eyebrow">OVERLAYS</span><h2>&#28014;&#31383;&#25968;&#25454;</h2></div><span class="step-badge">4</span></div><div id="widgetPalette" class="palette dock-palette"></div></article>
+      <article class="output-panel render-panel compact-render"><div class="output-header"><div><span class="eyebrow">RENDER</span><h2>&#23548;&#20986;&#20219;&#21153;</h2></div><span class="status-light" aria-hidden="true"></span></div><div id="renderProgress" class="render-progress" aria-live="polite"><div class="progress-meta"><span id="progressLabel">&#31561;&#24453;&#23548;&#20986;</span><span id="progressPercent">0%</span></div><div class="progress-track"><div id="progressFill" class="progress-fill"></div></div><div id="progressDetail" class="progress-detail">&#36873;&#25321;&#35270;&#39057;&#21518;&#28857;&#20987;&#8220;&#23548;&#20986;&#35270;&#39057;&#8221;&#12290;</div></div><details class="render-diagnostics"><summary>&#26085;&#24535;&#19982;&#21629;&#20196;</summary><div class="diagnostics-body"><pre id="renderStatus" class="render-status"></pre><div class="diagnostics-command-head"><span>Windows &#21629;&#20196;</span><button id="copyCommand" type="button">&#22797;&#21046;</button></div><textarea id="commandOutput" spellcheck="false"></textarea></div></details></article>
+    </section>
+    <textarea id="xmlOutput" class="hidden" spellcheck="false" aria-hidden="true"></textarea>
+  </section>
+</main>
+<input id="presetFile" class="hidden" type="file" accept="application/json"><script src="./app.js?v=20260717-1"></script>
+</body>
+</html>
